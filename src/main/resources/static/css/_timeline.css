@@ -1,0 +1,123 @@
+
+h2{
+    color: darkmagenta;
+}
+
+.tl-container {
+    /*background-color: lavender;*/
+    position: relative;
+    margin: 0 auto;
+    padding: 0.6em;
+    /*
+    display: block;
+    height: 550px;
+    overflow: auto;*/
+}
+.tl-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5em
+}
+.tl-view {
+    position: relative;
+    z-index: 1;
+}
+.tl-view > table {
+    width: 100%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+}
+.tl-view > thead {
+    border-color: #DCDCDC;
+}
+.tl-view > tbody {
+    border-color: #DCDCDC;
+}
+.tl-view td, .tl-view th {
+    border-color: #DCDCDC;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+}
+.tl-head > tr >  td, .tl-body > tr >  td {
+    white-space: nowrap;
+}
+.tl-head > tr > .tl-resource-area, .tl-body > tr > .tl-resource-area {
+    width: 30%;
+}
+.tl-head > tr > .tl-divider, .tl-body > tr > .tl-divider {
+    width: 3px;
+    border-style: double;
+}
+.tl-scroller-clip {
+    overflow: hidden;
+    position: relative;
+}
+.tl-chrono-cell {
+    display: inline-block;
+    padding: 3px 4px 3px 4px;
+}
+.resource-area-head {
+    display: inline-block;
+    padding: 3px 4px 3px 4px;
+}
+.resource-area-cell {
+    padding: 8px 4px 8px 4px;
+}
+.timeline-rooms {
+    min-width: 25%;
+    float: left;
+    display: block;
+    height: 550px;
+    overflow: hidden;
+    padding: 1px;
+}
+.timeline-rooms-head {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    box-shadow: 
+        1px 0 0 0 #DCDCDC, 
+        0 1px 0 0 #DCDCDC, 
+        1px 1px 0 0 #DCDCDC,   /* Just to fix the corner */
+        1px 0 0 0 #DCDCDC inset, 
+        0 1px 0 0 #DCDCDC inset;
+}
+.timeline-rooms-item {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15px;
+    box-shadow: 
+        1px 0 0 0 #DCDCDC, 
+        0 1px 0 0 #DCDCDC, 
+        1px 1px 0 0 #DCDCDC,   /* Just to fix the corner */
+        1px 0 0 0 #DCDCDC inset, 
+        0 1px 0 0 #DCDCDC inset;
+
+}
+.timeline-chrono {    
+    min-width: 75%;
+    overflow: hidden;
+    padding: 1px;
+}
+.chrono {
+    box-sizing: content-box;
+}
+.chrono-header {
+    width: 60px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-shadow: 
+        1px 0 0 0 #DCDCDC, 
+        0 1px 0 0 #DCDCDC, 
+        1px 1px 0 0 #DCDCDC,   /* Just to fix the corner */
+        1px 0 0 0 #DCDCDC inset, 
+        0 1px 0 0 #DCDCDC inset;
+}
