@@ -20,7 +20,9 @@ public class HomeController {
 
     @GetMapping
     String getView(Model model) {
-        model.addAttribute("msg", "Hello there, This message has been injected from the controller method");
+        model.addAttribute("msg", 
+                "Hello there, Gestione di attività in spazi ricreativi: Per gestire l'allocamento temporale di risorse, in modo generale ho definito i concetti di spazio fisico e temporale come \"slot\" (\"time_slot\" e \"space_slot\")."
+        );
         return "home";
     }
 }

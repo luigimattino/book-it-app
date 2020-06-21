@@ -25,4 +25,7 @@ public class EventForm {
     @JsonFormat(pattern="HH:mm")
     private LocalTime end;
     private Long idSpace;
+    private String nameSpace;
+    private Long startDateTimeMillis;
+    private Long endDateTimeMillis;
 }

@@ -7,11 +7,13 @@ Gestione di attività in spazi ricreativi: Per gestire  l'allocamento temporale 
 
 ## Built With
 
-* 	[git](https://git-scm.com/) - Free and Open-Source distributed version control system.
-* 	[Maven](https://maven.apache.org/) - Dependency Management.
-* 	[JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Java™ Platform, Standard Edition Development Kit.
-* 	[Spring Boot](https://spring.io/projects/spring-boot) - Framework to ease the bootstrapping and development of new Spring Applications.
+*   [git](https://git-scm.com/) - Free and Open-Source distributed version control system.
+*   [Maven](https://maven.apache.org/) - Dependency Management.
+*   [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Java™ Platform, Standard Edition Development Kit.
+*   [Spring Boot](https://spring.io/projects/spring-boot) - Framework to ease the bootstrapping and development of new Spring Applications.
 *   [Lombok](https://projectlombok.org/) - Never write another getter or equals method again, with one annotation your class has a fully featured builder, Automate your logging variables, and much more.
+*   [Bootstrap](https://getbootstrap.com/) - Is the most popular HTML, CSS, and JavaScript framework for developing responsive, mobile-first websites.
+*   [JQuery](https://jquery.com/) - JavaScript library that makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 *   [timetable.js](http://timetablejs.org/) - For the purpose of display a timeline that represents the resource.  
 
 
@@ -42,4 +44,5 @@ Open URL `http://localhost:8080/home` in the browser.
 
 ### URLS
  * Home -> `http://localhost:8080/home`
- * Home -> `http://localhost:8080/home`
+ * Timeline page where to book resources -> `http://localhost:8080/timeline`
+ * Space slots list page where insert & edit resources -> `http://localhost:8080/space-slots`

@@ -7,6 +7,7 @@ package it.lmattino.book.it.app.services;
 
 import it.lmattino.book.it.app.exceptions.OverlappingEventException;
 import it.lmattino.book.it.app.models.TimeSlot;
+import it.lmattino.book.it.app.models.TimeSlotIdentity;
 import it.lmattino.book.it.app.repositories.TimeSlotRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -78,13 +79,20 @@ public class TimeSlotServiceImpl implements TimeSlotService {
     }
 
     @Override
-    public TimeSlot updateTimeSlot(TimeSlot timeSlot) throws OverlappingEventException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public TimeSlot updateTimeSlot(TimeSlot timeSlot) {
+        repository.save(timeSlot);
+        return timeSlot;
     }
 
     @Override
-    public TimeSlot deleteTimeSlot(TimeSlot timeSlot) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteTimeSlot(TimeSlot timeSlot) {
+        repository.delete(timeSlot);
+        return true;
+    }
+
+    @Override
+    public TimeSlot findByIdentity(TimeSlotIdentity identity) {
+        return repository.findById(identity).get();
     }
 
 }

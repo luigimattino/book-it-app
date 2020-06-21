@@ -31,8 +31,8 @@ public class DataSourceConfig {
     CommandLineRunner initDatabase() {
         return (String[] args) -> {
             String[] slotArray = {
-                "Auditorium A1", "Auditorium B1", "Auditorium C1", "Auditorium D1",
-                "Auditorium A2", "Auditorium B2", "Auditorium C2", "Auditorium D2",
+                //"Auditorium A1", "Auditorium B1", "Auditorium C1", "Auditorium D1",
+                //"Auditorium A2", "Auditorium B2", "Auditorium C2", "Auditorium D2",
                 "Auditorium E", "Auditorium F", "Auditorium G", "Auditorium H",
                 "Auditorium I", "Auditorium L", "Auditorium M", "Auditorium N"
             };

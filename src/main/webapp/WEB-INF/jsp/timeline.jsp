@@ -62,6 +62,14 @@
                                             <div id="add-event-form" class="d-none">
                                                 <div class="form-group">
                                                     <div class="row mb-2">
+                                                        <div class="col-md-3">
+                                                            <button id="save-event-btn" >Save Event</button>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button id="cancel-btn" >Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
                                                         <div class="col-md-6">
                                                             <select id="space-slot-select" class="custom-select mb-3">
                                                                 <option selected>Seleziona slot</option>
@@ -83,11 +91,6 @@
                                                             <input type="text" class="form-control" id="eventText" placeholder="event text">                                                        
                                                         </div>
                                                     </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-md-3">
-                                                            <button id="save-event-btn" >Save Event</button>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,6 +102,27 @@
                                     <div class="timetable"></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="EditModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit event</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="eventText">Text</label>
+                        <input type="text" class="form-control" id="eventText" placeholder="event text">                                                        
+                    </div>
+                    <div class="modal-footer">
+                        <div class="lead text-xs-center">
+                            <a id="update-event-btn" class="btn btn-success" href="#">Update</a>
+                        </div>
+                        <div class="lead text-xs-center">
+                            <a id="delete-event-btn" class="btn btn-danger" href="#">Delete</a>
                         </div>
                     </div>
                 </div>

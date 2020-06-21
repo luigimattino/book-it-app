@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SpaceSlotRepository extends CrudRepository<SpaceSlot, Long> {
-    
+    public SpaceSlot findByText(String text);
 }

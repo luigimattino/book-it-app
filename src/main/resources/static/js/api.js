@@ -39,6 +39,14 @@ $(document).ready(function () {
         $('#add-event-btn').toggleClass('d-none');
         $('#add-event-form').toggleClass('d-none');
     })
+    $('#cancel-btn').click(function () {
+        $('#add-event-form').find('#eventText').val("");
+        $('#add-event-form').find('#eventStart').val("");
+        $('#add-event-form').find('#eventEnd').val("");
+        $('#add-event-form').find('#space-slot-select').val("");
+        $('#add-event-btn').toggleClass('d-none');
+        $('#add-event-form').toggleClass('d-none');
+    })
     $('#save-event-btn').click(function () {
 
         var event = {};
@@ -87,10 +95,12 @@ function loadTimeTable() {
             $('#no-spaces-alert').toggleClass("d-none");
             $('#timetable-body').toggleClass("d-none");
         } else {
-            var select = $('#space-slot-select');
-            data.forEach(elem => {
-                select.append('<option value="' + elem.id + '">' + elem.text + '</option>');
-            })
+            if ($("option").length < 2) {
+                var select = $('#space-slot-select');
+                data.forEach(elem => {
+                    select.append('<option value="' + elem.id + '">' + elem.text + '</option>');
+                });
+            }
             var timetable = new Timetable();
             timetable.setScope(0, 23)
             timetable.addLocations(data.map(elem => elem.text));
@@ -101,12 +111,6 @@ function loadTimeTable() {
 
 function getTimes(timetable) {
     var stringDate = formatDate($('#datepicker').datepicker('getDate'));
-    /*$.get("/api/all-times", function (data, status) {
-     console.log("Data: " + JSON.stringify(data) + "\nStatus: " + status);
-     if ($.isEmptyObject(data)) {
-     
-     }
-     });*/
     $.ajax({
         type: "GET",
         url: "/api/all-times",
@@ -135,9 +139,69 @@ function getTimes(timetable) {
 }
 
 function onClickEvent(event) {
-    window.alert('You clicked on the ' + event.name + ' event in ' + event.location + '. This is an example of a click handler');
+    //window.alert('You clicked on the ' + event.name + ' event in ' + event.location + '. This is an example of a click handler');
+    $('#EditModal').find('#eventText').val(event.name);
+    $('#EditModal').find('#update-event-btn').click(event, updateEvent);
+    $('#EditModal').find('#delete-event-btn').click(event, deleteEvent);
+    $('#EditModal').modal('show');
 }
 
+function updateEvent(thatevent) {
+    var event = {};
+    event['text'] = $('#EditModal').find('#eventText').val();
+    event['startDateTimeMillis'] = thatevent.data.startDate.getTime();
+    event['endDateTimeMillis'] = thatevent.data.endDate.getTime();
+    event['nameSpace'] = thatevent.data.location;
+    $.ajax({
+        type: "PUT",
+        contentType: "application/json",
+        url: "/api/update-event",
+        data: JSON.stringify(event),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            console.log("SUCCESS : ", data);
+            location.reload();
+
+        },
+        error: function (e) {
+            $('#error-feedback-alert').toggleClass('d-none');
+            $('#error-feedback-alert').find('.alert').html(e.responseText)
+            console.log("ERROR : ", e);
+            setTimeout(toggleErrorFeedbackAlert, 10000);
+        }
+    });
+}
+
+function deleteEvent(thatevent) {
+    var event = {};
+    //event['text'] = $('#EditModal').find('#eventText').val();
+    event['startDateTimeMillis'] = thatevent.data.startDate.getTime();
+    event['endDateTimeMillis'] = thatevent.data.endDate.getTime();
+    event['nameSpace'] = thatevent.data.location;
+    $.ajax({
+        type: "DELETE",
+        contentType: "application/json",
+        url: "/api/delete-event",
+        data: JSON.stringify(event),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            console.log("SUCCESS : ", data);
+            location.reload();
+        },
+        error: function (e) {
+            $('#error-feedback-alert').toggleClass('d-none');
+            $('#error-feedback-alert').find('.alert').html(e.responseText)
+            console.log("ERROR : ", e);
+            setTimeout(toggleErrorFeedbackAlert, 10000);
+        }
+    });
+}
+
+//UNUSED - ONLY FOR TESTING PURPOSE
 function fire_ajax_submit() {
     var event = {};
     event['text'] = "esempio di test";
@@ -186,25 +250,4 @@ function formatDate(date) {
 
     return [year, month, day].join('-');
 }
-/*
- var timetable = new Timetable();
- 
- timetable.setScope(0, 23)
- 
- timetable.addLocations(['Rotterdam', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
- 
- timetable.addEvent('Sightseeing', 'Rotterdam', new Date(2015, 7, 17, 9, 00), new Date(2015, 7, 17, 11, 30), {url: '#'});
- timetable.addEvent('Zumba', 'Madrid', new Date(2015, 7, 17, 12), new Date(2015, 7, 17, 13), {url: '#'});
- timetable.addEvent('Zumbu', 'Madrid', new Date(2015, 7, 17, 13, 30), new Date(2015, 7, 17, 15), {url: '#'});
- timetable.addEvent('Lasergaming', 'London', new Date(2015, 7, 17, 17, 45), new Date(2015, 7, 17, 19, 30), {class: 'vip-only', data: {maxPlayers: 14, gameType: 'Capture the flag'}});
- timetable.addEvent('All-you-can-eat grill', 'New York', new Date(2015, 7, 17, 21), new Date(2015, 7, 18, 1, 30), {url: '#'});
- timetable.addEvent('Hackathon', 'Tokyo', new Date(2015, 7, 17, 11, 30), new Date(2015, 7, 17, 20)); // options attribute is not used for this event
- timetable.addEvent('Tokyo Hackathon Livestream', 'Los Angeles', new Date(2015, 7, 17, 12, 30), new Date(2015, 7, 17, 16, 15)); // options attribute is not used for this event
- timetable.addEvent('Lunch', 'Jakarta', new Date(2015, 7, 17, 9, 30), new Date(2015, 7, 17, 11, 45), {onClick: function (event) {
- window.alert('You clicked on the ' + event.name + ' event in ' + event.location + '. This is an example of a click handler');
- }});
- timetable.addEvent('Cocktails', 'Rotterdam', new Date(2015, 7, 18, 00, 00), new Date(2015, 7, 18, 02, 00), {class: 'vip-only'});
- 
- var renderer = new Timetable.Renderer(timetable);
- renderer.draw('.timetable');
- */
+
