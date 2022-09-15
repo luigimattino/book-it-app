@@ -6,7 +6,6 @@ Management of activities in recreational spaces: To manage the temporal allocati
 Gestione di attività in spazi ricreativi: Per gestire  l'allocamento temporale di risorse, in modo generale ho definito i concetti di spazio fisico e temporale come "slot" ("time_slot" e "space_slot"). Da ciò ho implementato il contesto spring boot con l'uso del database in memoria per uso di prova.
 
 ## Built With
-
 *   [git](https://git-scm.com/) - Free and Open-Source distributed version control system.
 *   [Maven](https://maven.apache.org/) - Dependency Management.
 *   [JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Java™ Platform, Standard Edition Development Kit.
@@ -18,7 +17,6 @@ Gestione di attività in spazi ricreativi: Per gestire  l'allocamento temporale 
 
 
 ## Running the application locally
-
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `it.lmattino.book.it.app.BookItApp` class from your IDE.
 
 - Download the zip or clone the Git repository.
